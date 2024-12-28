@@ -1,7 +1,7 @@
 @php
 	$headerClass = (!empty($headerInverse)) ? 'navbar-inverse ' : 'navbar-default ';
 	$headerMenu = (!empty($headerMenu)) ? $headerMenu : '';
-	$headerMegaMenu = (!empty($headerMegaMenu)) ? $headerMegaMenu : ''; 
+	$headerMegaMenu = (!empty($headerMegaMenu)) ? $headerMegaMenu : '';
 	$headerTopMenu = (!empty($headerTopMenu)) ? $headerTopMenu : '';
 @endphp
 <!-- begin #header -->
@@ -48,9 +48,9 @@
 		@endif
 	</div>
 	<!-- end navbar-header -->
-	
+
 	@includeWhen($headerMegaMenu, 'includes.header-mega-menu')
-	
+
 	<!-- begin header-nav -->
 	<ul class="navbar-nav navbar-right">
 		<li class="navbar-form">

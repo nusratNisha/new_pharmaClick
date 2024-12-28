@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="panel-body">
-            Panel Content Here
+test
         </div>
     </div>
     <!-- end panel -->

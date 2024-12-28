@@ -39,7 +39,7 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">
 								<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-									<i class="fa fa-plus-circle pull-right text-success"></i> 
+									<i class="fa fa-plus-circle pull-right text-success"></i>
 									Accordion #1
 								</a>
 							</h3>
@@ -54,7 +54,7 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">
 								<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-									<i class="fa fa-plus-circle pull-right text-success"></i> 
+									<i class="fa fa-plus-circle pull-right text-success"></i>
 									Accordion #2
 								</a>
 							</h3>
@@ -69,7 +69,7 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">
 								<a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-									<i class="fa fa-plus-circle pull-right text-success"></i> 
+									<i class="fa fa-plus-circle pull-right text-success"></i>
 									Accordion #3
 								</a>
 							</h3>
