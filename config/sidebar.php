@@ -24,6 +24,17 @@ return [
             'url' => '/appointments',
             'icon' => 'fa fa-calendar',
         ],
+        [
+            'title' => 'Medicine Order',
+            'url' => '/medicineOrder',
+            'icon' => 'fa fa-medkit',
+        ],
+        [
+            'title' => 'Medical Services',
+            'url' => '/medicalServices',
+            'icon' => 'fa fa-stethoscope',
+        ],
+
         // other menu items...
     ],
 ];
