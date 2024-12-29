@@ -18,4 +18,4 @@ Route::get('/', function () {
 Route::get('/home', 'MainController@home')->name('home');
 Route::get('/appointments', 'AppointmentsController@appointments')->name('appointments');
 Route::get('/medicineOrder', 'MedicineOrderController@medicineOrder')->name('medicineOrder');
-Route::get('/medicalServices', 'MedicalServicesController@medicalServices')->name('medicalServices');
+Route::get('/medicalServices', 'MedicalServicesController@medicalServices')->name('medicgit pull origin mainalServices');
