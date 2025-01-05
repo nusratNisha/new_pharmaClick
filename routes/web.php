@@ -12,6 +12,7 @@
 */
 // routes/web.php
 
+use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MedicineOrderController;
@@ -32,7 +33,7 @@ Route::middleware(['auth', 'check.status'])->group(function () {
     Route::get('/home', 'MainController@home')->name('home');
 
     // Update the route names to match the ones in the Blade view
-    Route::get('/appointments', 'AppointmentsController@appointments')->name('appointments.index');
+    Route::get('/appointments', [AppointmentsController::class, 'appointments'])->name('appointments.index');
     //Route::get('/medicine/order', 'MedicineOrderController@medicineOrder')->name('medicine.order');
     Route::get('/medicine/order', [MedicineOrderController::class, 'medicineOrder'])->name('medicine.order');
 
