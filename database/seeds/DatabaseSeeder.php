@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'role' => 'super_admin',
             'phone' => '01162332606',
-            'matric_id' => '1315487',
+            'matric_id' => '12345',
             'status' => 'Approved',
         ]);
         User::create([
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('Abcde101'),
             'role' => 'super_admin',
             'phone' => '01162332606',
-            'matric_id' => '1315488',
+            'matric_id' => '123456',
             'status' => 'Approved',
         ]);
 
