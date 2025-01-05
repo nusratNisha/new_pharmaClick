@@ -35,6 +35,13 @@ return [
             'icon' => 'fa fa-stethoscope',
         ],
 
+        [
+            'title' => 'Contact Us',
+            'icon' => 'fa fa-envelope',
+            'url' => '/contact-us',
+            'route-name' => 'contactUs.form',
+        ],
+
         // other menu items...
     ],
 ];
