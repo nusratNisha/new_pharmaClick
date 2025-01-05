@@ -26,7 +26,7 @@ return [
         ],
         [
             'title' => 'Medicine Order',
-            'url' => '/medicineOrder',
+            'url' => '/medicine/order',
             'icon' => 'fa fa-medkit',
         ],
         [

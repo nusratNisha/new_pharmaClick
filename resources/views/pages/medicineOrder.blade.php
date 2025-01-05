@@ -9,8 +9,8 @@
         <div class="pos-menu">
             <div class="logo">
                 <a href="index_v3.html">
-                    <div class="logo-img"><img src="/assets/img/pos/logo.svg" /></div>
-                    <div class="logo-text">Pine & Dine</div>
+                    <div class="logo-img"><img src="/images/healthCareLogo.png" /></div>
+                    <div class="logo-text">Welcome to pharmacy </div>
                 </a>
             </div>
             <div class="nav-container">

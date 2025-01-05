@@ -12,7 +12,9 @@
 */
 // routes/web.php
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MedicineOrderController;
 use App\Http\Controllers\ContactUsController;
+
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
@@ -25,7 +27,9 @@ Route::get('/home', 'MainController@home')->name('home');
 
 // Update the route names to match the ones in the Blade view
 Route::get('/appointments', 'AppointmentsController@appointments')->name('appointments.index');
-Route::get('/medicine/order', 'MedicineOrderController@medicineOrder')->name('medicine.order');
+//Route::get('/medicine/order', 'MedicineOrderController@medicineOrder')->name('medicine.order');
+Route::get('/medicine/order', [MedicineOrderController::class, 'medicineOrder'])->name('medicine.order');
+
 
 // Medical Services route
 Route::get('/medicalServices', 'MedicalServicesController@medicalServices')->name('medicalServices');
