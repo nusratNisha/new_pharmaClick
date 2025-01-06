@@ -76,7 +76,8 @@ class AuthController extends Controller
         if (!$user || !Hash::check($validated['password'], $user->password)) {
             return redirect()->back()->withErrors(['matric_id' => 'Invalid matric ID or password.'])->withInput();
         }
-
+        // Generate an API token
+        $token = $user->createToken('auth_token')->plainTextToken;
         // Log the user in
         auth()->login($user);
 
@@ -90,10 +91,11 @@ class AuthController extends Controller
     {
         // Check if user is authenticated
         if ($request->user()) {
-            // Delete the current access token
-            $request->user()->currentAccessToken()->delete();
+            // Delete the current access token if it exists
+            if ($request->user()->currentAccessToken()) {
+                $request->user()->currentAccessToken()->delete();
+            }
         }
-
         // Logout the user from Laravel's session-based authentication
         Auth::logout();
 

@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'super_admin',
             'phone' => '01162332606',
             'matric_id' => '12345',
-            'status' => 'Approved',
+            'status' => 'approved',
         ]);
         User::create([
             'name' => 'Nusrat Nisha ',
@@ -38,7 +38,16 @@ class DatabaseSeeder extends Seeder
             'role' => 'super_admin',
             'phone' => '01162332606',
             'matric_id' => '123456',
-            'status' => 'Approved',
+            'status' => 'approved',
+        ]);
+        User::create([
+            'name' => 'test ',
+            'email' => 'test@test.test',
+            'password' => bcrypt('password'),
+            'role' => 'patient',
+            'phone' => '0116233245',
+            'matric_id' => '123',
+            'status' => 'pending',
         ]);
 
 

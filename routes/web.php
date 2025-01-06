@@ -15,6 +15,7 @@
 use App\Http\Controllers\AppointmentsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\MedicineOrderController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\UserController;
@@ -30,7 +31,7 @@ Route::get('/', function () {
 // Protected routes for pending users
 Route::middleware(['auth', 'check.status'])->group(function () {
 
-    Route::get('/home', 'MainController@home')->name('home');
+    Route::get('/home', [MainController::class, 'home'])->name('home');
 
     // Update the route names to match the ones in the Blade view
     Route::get('/appointments', [AppointmentsController::class, 'appointments'])->name('appointments.index');
@@ -44,6 +45,9 @@ Route::middleware(['auth', 'check.status'])->group(function () {
 
     Route::get('/contact-us', [ContactUsController::class, 'showContactForm'])->name('contactUs.form');
     Route::resource('users', UserController::class);
+    //approve user route
+    Route::get('/user_approve/{id}', [UserController::class, 'approve'])->name('user.approve');
+    Route::get('/user_reject/{id}', [UserController::class, 'reject'])->name('user.reject');
 });
 
 
@@ -51,6 +55,8 @@ Route::middleware(['auth', 'check.status'])->group(function () {
 
 
 Route::get('/pending-approval', [UserController::class, 'showPendingApproval'])->name('pending_approval');
+
+
 
 
 

@@ -151,4 +151,22 @@ class UserController extends Controller
 
         return response()->json(['message' => 'User deleted successfully.']);
     }
+
+    public function approve($id)
+    {
+        // Logic for approving the user
+        $user = User::findOrFail($id);
+        $user->status = 'approved';
+        $user->save();
+
+        return redirect()->route('home'); // Redirect to the user listing page or wherever necessary
+    }
+    public function reject($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = 'rejected';
+        $user->save();
+
+        return redirect()->route('home');
+    }
 }

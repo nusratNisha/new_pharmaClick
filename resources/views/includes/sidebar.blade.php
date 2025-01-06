@@ -5,31 +5,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 <div id="sidebar" class="sidebar {{ $sidebarClass }}">
 	<!-- begin sidebar scrollbar -->
 	<div data-scrollbar="true" data-height="100%">
-		<!-- @if (!$sidebarSearch)
-		<ul class="nav">
-			<li class="nav-profile">
-				<a href="javascript:;" data-toggle="nav-profile">
-					<div class="cover with-shadow"></div>
-					<div class="image image-icon bg-black text-grey-darker">
-						<i class="fa fa-user"></i>
-					</div>
-					<div class="info">
-						<b class="caret pull-right"></b>
-						Sean Ngu
-						<small>Front end developer</small>
-					</div>
-				</a>
-			</li>
-			<li>
-				<ul class="nav nav-profile">
-					<li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
-					<li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
-					<li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
-				</ul>
-			</li>
-		</ul>
-		@endif -->
-		<!-- begin sidebar nav -->
+
 		<ul class="nav">
 			@if ($sidebarSearch)
 			<li class="nav-search">
@@ -37,15 +13,18 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 			</li>
 			@endif
 			<li class="nav-header">Navigation</li>
+
 			@php
 			$currentUrl = (Request::path() != '/') ? '/'. Request::path() : '/';
 
 			function renderSubMenu($value, $currentUrl) {
+
 			$subMenu = '';
 			$GLOBALS['sub_level'] += 1 ;
 			$GLOBALS['active'][$GLOBALS['sub_level']] = '';
 			$currentLevel = $GLOBALS['sub_level'];
 			foreach ($value as $key => $menu) {
+
 			$GLOBALS['subparent_level'] = '';
 
 			$subSubMenu = '';
