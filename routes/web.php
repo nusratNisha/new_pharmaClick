@@ -53,7 +53,7 @@ Route::middleware(['auth', 'check.status'])->group(function () {
 
 
 
-
+Route::post('/appointments', [AppointmentsController::class, 'store'])->name('appointments.store');
 Route::get('/pending-approval', [UserController::class, 'showPendingApproval'])->name('pending_approval');
 
 
