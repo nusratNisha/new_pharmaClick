@@ -34,7 +34,16 @@ return [
             'url' => '/medicalServices',
             'icon' => 'fa fa-stethoscope',
         ],
-
+        [
+            'title' => 'Counselling',
+            'url' => '/counselling',
+            'icon' => 'fa fa-comments',
+        ],
+        [
+            'title' => 'Emergency',
+            'url' => '/emergency',
+            'icon' => 'fa fa-ambulance',
+        ],
         [
             'title' => 'Contact Us',
             'icon' => 'fa fa-envelope',

@@ -14,11 +14,11 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->string('email')->unique()->charset('utf8');
             $table->string('password');
-            $table->string('matric_id')->unique();  // Added matric_id column
+            $table->string('matric_id')->unique();
             $table->string('role')->default('user'); // Added role column with default value
             $table->string('status')->default('active'); // Added status column with default value
             $table->string('phone')->nullable();

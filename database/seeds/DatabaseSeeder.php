@@ -169,9 +169,6 @@ class DatabaseSeeder extends Seeder
 
         //  // Call the RegionsTableSeeder
 
-        //  $this->call(RegionsTableSeeder::class);
-
-
 
     }
 }

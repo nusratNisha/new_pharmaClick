@@ -23,7 +23,7 @@
 				<h1>Appointment</h1>
 			</div>
 			<div class="stats-link">
-				<a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+				<a href="{{ route('appointments.index') }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
 			</div>
 		</div>
 	</div>
@@ -36,7 +36,7 @@
 				<h1> Contact Us</h1>
 			</div>
 			<div class="stats-link">
-				<a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+				<a href="{{ route('contactUs.form') }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
 			</div>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 				<h1>Hours</h1>
 			</div>
 			<div class="stats-link">
-				<a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+				<a href="{{ route('medicalServices') }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
 			</div>
 		</div>
 	</div>
@@ -62,7 +62,7 @@
 				<h1>PharmaClick</h1>
 			</div>
 			<div class="stats-link">
-				<a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+				<a href="{{ route('medicine.order') }}">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
 			</div>
 		</div>
 	</div>

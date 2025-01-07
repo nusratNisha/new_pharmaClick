@@ -17,6 +17,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MedicineOrderController;
+use App\Http\Controllers\EmergencyController;
+use App\Http\Controllers\CounsellingController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +43,9 @@ Route::middleware(['auth', 'check.status'])->group(function () {
 
     // Medical Services route
     Route::get('/medicalServices', 'MedicalServicesController@medicalServices')->name('medicalServices');
+
+    Route::get('/counselling', [CounsellingController::class, 'index'])->name('counselling.index');
+    Route::get('/emergency', [EmergencyController::class, 'index'])->name('emergency.index');
 
 
     Route::get('/contact-us', [ContactUsController::class, 'showContactForm'])->name('contactUs.form');
