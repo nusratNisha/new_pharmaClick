@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
 
 
         User::create([
-            'name' => 'Dr.Norhilda Binti Abdul Karim',
+            'name' => 'Dr. Norhilda Binti Abdul Karim',
             'email' => 'norhilda@umpsa.edu.my',
             'password' => bcrypt('password'),
             'role' => 'doctor',
@@ -102,7 +102,7 @@ class DatabaseSeeder extends Seeder
 
 
         User::create([
-            'name' => 'Noor Aina Binti Abdullah ',
+            'name' => 'Dr. Noor Aina Binti Abdullah ',
             'email' => 'noorainabdullah@umpsa.edu.my',
             'password' => bcrypt('password'),
             'role' => 'doctor',
@@ -113,7 +113,7 @@ class DatabaseSeeder extends Seeder
 
 
         User::create([
-            'name' => 'Nur Azmma Aziana Binti Azman',
+            'name' => 'Dr. Nur Azmma Aziana Binti Azman',
             'email' => 'nurazma@umpsa.edu.my',
             'password' => bcrypt('password'),
             'role' => 'doctor',
@@ -124,7 +124,7 @@ class DatabaseSeeder extends Seeder
 
 
         User::create([
-            'name' => 'Mohammad Hazwan Hafizuddin Bin Hashim',
+            'name' => 'Dr. Mohammad Hazwan Hafizuddin Bin Hashim',
             'email' => 'mhazwanh@umpsa.edu.my',
             'password' => bcrypt('password'),
             'role' => 'doctor',
