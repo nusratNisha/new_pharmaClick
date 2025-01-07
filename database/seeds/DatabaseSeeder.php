@@ -66,6 +66,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '101234',
             'status' => 'approved',
+            'photo' => ''
         ]);
 
 
@@ -77,6 +78,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '123890',
             'status' => 'approved',
+            'photo' => ''
         ]);
 
         User::create([
@@ -87,6 +89,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '345690',
             'status' => 'approved',
+            'photo' => 'Dr.ErwinaNussyaheera.jpg'
         ]);
 
 
@@ -98,6 +101,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '234098',
             'status' => 'approved',
+            'photo' => 'Dr.SyedAnas.jpg'
         ]);
 
 
@@ -109,6 +113,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '143289',
             'status' => 'approved',
+            'photo' => 'Dr.NoorAinaBinti.jpg'
         ]);
 
 
@@ -120,6 +125,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '145890',
             'status' => 'approved',
+            'photo' => 'Dr.NurAzma.jpg'
         ]);
 
 
@@ -131,6 +137,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '1897324',
             'status' => 'approved',
+            'photo' => 'Dr.MohammadHazwan.jpg'
         ]);
 
 
@@ -143,6 +150,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '128567',
             'status' => 'approved',
+            'photo' => 'Dr.MohammadSyarbini.jpg'
         ]);
 
 
