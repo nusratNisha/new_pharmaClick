@@ -79,7 +79,7 @@
 
                 <!-- Add Matric ID Field -->
                 <div class="form-group m-b-15">
-                    <input type="text" class="form-control form-control-lg @error('matric_id') is-invalid @enderror" name="matric_id" placeholder="Matric ID" value="{{ old('matric_id') }}" required />
+                    <input type="text" class="form-control form-control-lg @error('matric_id') is-invalid @enderror" name="matric_id" placeholder="Matric ID/ID" value="{{ old('matric_id') }}" required />
                     @error('matric_id')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror

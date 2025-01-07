@@ -19,6 +19,8 @@
 
 <body class="bg-light p-4">
     <div class="container bg-white p-4 rounded shadow">
+        @if (auth()->user()->role=='patient')
+
         <h1 class="text-center text-3xl font-weight-bold mb-4 bg-primary text-white py-3 rounded">
             Book an Appointment
         </h1>
@@ -60,6 +62,11 @@
                 </div>
             </div>
         </div>
+        @endif
+
+
+
+        @if (auth()->user()->role=='patient')
         <!-- =========================Start Appointment Form =================================== -->
         <div class="mt-6 bg-light">
             <h2 class="pl-3 text-xl text-white font-weight-bold mb-4 bg-primary py-2 rounded">
@@ -73,6 +80,7 @@
                         <select class="form-control" id="doctor-name" name="doctor_id" required>
                             <option value="" disabled selected>Select a Doctor</option>
                             @foreach ($doctors as $doctor)
+
                             <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                             @endforeach
                         </select>
@@ -102,7 +110,7 @@
                 </form>
             </div>
         </div>
-
+        @endif
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Set the minimum date to today's date
@@ -134,7 +142,7 @@
             });
         </script>
         <!-- =========================End Appointment Form =================================== -->
-
+        @if (auth()->user()->role=='patient')
         <div class="mt-5 mb-5">
             <h2 class="pl-3 text-xl text-white font-weight-bold mb-4 bg-primary py-2 rounded">
                 My Appointment
@@ -153,16 +161,77 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($appointments as $index => $appointment)
+                        @forelse ($userAppointments as $index => $appointment)
+
                         <tr>
                             <td>{{ $index + 1 }}</td>
-                            <td>{{ $appointment->doctor->name }}</td> <!-- Assuming you have a 'doctor' relationship -->
+                            <td>{{ $appointment->doctor->name }}</td>
                             <td>{{ ucfirst($appointment->type) }}</td>
                             <td>{{ \Carbon\Carbon::parse($appointment->date)->format('d M Y') }}</td>
                             <td>{{ \Carbon\Carbon::parse($appointment->time)->format('H:i') }}</td>
-                            <td>{{ ucfirst($appointment->status) }}</td> <!-- Assuming you have 'status' field -->
+                            <td class="{{ strtolower($appointment->status) == 'canceled' ? 'text-red' : '' }}">{{ ucfirst($appointment->status) }}</td>
                             <td class="with-btn" nowrap>
+                                @if ($appointment->status !='Canceled')
                                 <a href="{{ route('appointment.cancel', ['id' => $appointment->id]) }}" class="btn btn-sm btn-danger  p-3">Cancel Appointment</a>
+                                @endif
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="7" class="text-center">No appointments found</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @endif
+
+
+
+        @if (auth()->user()->role=='doctor')
+        <!-- ========================= Appointments for Doctors only =================================== -->
+        <div class="mt-6 bg-light">
+            <h2 class="pl-3 text-xl text-white font-weight-bold mb-4 bg-primary py-2 rounded">
+                Appointments
+            </h2>
+            <div class="table-responsive">
+                <table class="table table-striped m-b-0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Patient</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th width="1%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($doctorAppointments as $index => $appointment)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $appointment->user->name }}</td> <!-- Patient's name -->
+                            <td>{{ ucfirst($appointment->type) }}</td>
+                            <td>{{ \Carbon\Carbon::parse($appointment->date)->format('d M Y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($appointment->time)->format('H:i') }}</td>
+                            <td class="{{ strtolower($appointment->status) == 'canceled' ? 'text-red' : '' }}">
+                                {{ ucfirst($appointment->status) }}
+                            </td>
+                            <td class="with-btn" nowrap>
+                                @if ($appointment->status == 'Pending')
+                                <a href="{{ route('appointment.approve', ['id' => $appointment->id]) }}"
+                                    class="btn btn-sm btn-success p-2 mr-2">Approve</a>
+                                <a href="{{ route('appointment.reject', ['id' => $appointment->id]) }}"
+                                    class="btn btn-sm btn-danger p-2">Reject</a>
+                                @elseif ($appointment->status == 'Approved')
+                                <a href="{{ route('appointment.reject', ['id' => $appointment->id]) }}"
+                                    class="btn btn-sm btn-danger p-2">Reject</a>
+                                @elseif ($appointment->status == 'Rejected')
+                                <span class="badge badge-danger">Rejected</span>
+                                @endif
+
                             </td>
                         </tr>
                         @empty
@@ -175,50 +244,8 @@
             </div>
         </div>
 
+        @endif
 
-        <div class="mt-6">
-            <h2 class="pl-3 text-xl text-white font-weight-bold mb-4 bg-primary py-2 rounded">
-                Appointments List
-            </h2>
-            <div class="overflow-auto">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Doctor Name</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Monday</td>
-                            <td>9:00 AM</td>
-                            <td>dr. Azwan Syamh</td>
-                            <td>
-                                <select class="form-select">
-                                    <option value="active">Active</option>
-                                    <option value="miss">Missed</option>
-                                    <option value="canceled">Canceled</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>10:00 AM</td>
-                            <td>dr. Indah</td>
-                            <td>
-                                <select class="form-select">
-                                    <option value="active">Active</option>
-                                    <option value="miss">Missed</option>
-                                    <option value="canceled">Canceled</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 
     <script>

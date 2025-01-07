@@ -22,8 +22,8 @@ class CheckUserStatus
             if ($user->status !== 'approved') {
                 return redirect()->route('pending_approval');
             }
+            return $next($request);
         }
-
         // Handle unauthenticated users or other cases
         return redirect()->route('login')->withErrors('You must be logged in to access this resource.');
     }

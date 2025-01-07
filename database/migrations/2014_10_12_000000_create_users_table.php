@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('matric_id')->unique();  // Added matric_id column
             $table->string('role')->default('user'); // Added role column with default value
             $table->string('status')->default('active'); // Added status column with default value
-            $table->string('phone')->nullable(); // Added phone column, made nullable
+            $table->string('phone')->nullable();
+            $table->string('photo')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -58,6 +58,9 @@ Route::middleware(['auth', 'check.status'])->group(function () {
     //approve appointment
     Route::get('/appointment_approve/{id}', [AppointmentsController::class, 'approve'])->name('appointment.approve');
 
+    //reject appointment
+    Route::get('/appointment_reject/{id}', [AppointmentsController::class, 'reject'])->name('appointment.reject');
+
     Route::post('/appointments', [AppointmentsController::class, 'store'])->name('appointments.store');
 });
 

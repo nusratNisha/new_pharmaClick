@@ -34,13 +34,29 @@ class Appointment extends Model
 
     /**
      * Get the doctor associated with the appointment.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * In this relationship:
+     * - 'doctor_id' is the foreign key in the `appointments` table.
+     * - 'id' is the primary key in the `users` table being referenced.
      */
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(User::class, 'doctor_id', 'id');
     }
+
+    /**
+     * Get the user who created the appointment.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * In this relationship:
+     * - 'user_id' is the foreign key in the `appointments` table.
+     * - 'id' is the primary key in the `users` table being referenced.
+     */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

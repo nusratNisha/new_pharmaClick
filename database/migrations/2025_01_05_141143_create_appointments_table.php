@@ -19,7 +19,7 @@ class CreateAppointmentsTable extends Migration
             $table->string('type'); // Type of appointment
             $table->date('date'); // Appointment date
             $table->time('time'); // Appointment time
-            $table->string('status')->default('pending'); // Status of the appointment
+            $table->string('status')->default('Pending'); // Status of the appointment
             $table->unsignedBigInteger('doctor_id'); // Foreign key for doctor
             $table->text('reason_cancel')->nullable(); // Reason for cancellation (optional)
             $table->timestamps(); // Created and updated timestamps

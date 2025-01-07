@@ -15,12 +15,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        // Seeding Doctor data using the factory
-        // This will generate 10 doctor records
-        Doctor::factory(10)->create();
-        Medicine::factory(10)->create();
-
-
 
         User::create([
             'name' => 'Mohammed Abdullah',
@@ -40,6 +34,19 @@ class DatabaseSeeder extends Seeder
             'matric_id' => '123456',
             'status' => 'approved',
         ]);
+
+        //patient
+        User::create([
+            'name' => 'studen ',
+            'email' => 'test1@test.test',
+            'password' => bcrypt('password'),
+            'role' => 'patient',
+            'phone' => '0116233245',
+            'matric_id' => '1233',
+            'status' => 'approved',
+        ]);
+
+        //patient pending 
         User::create([
             'name' => 'test ',
             'email' => 'test@test.test',
@@ -50,6 +57,101 @@ class DatabaseSeeder extends Seeder
             'status' => 'pending',
         ]);
 
+        //Doctors
+        User::create([
+            'name' => 'Dr. Khairul Salleh Bin Abdul Basit',
+            'email' => 'khairulsalleh@umpsa.edu.my',
+            'password' => bcrypt('password'),
+            'role' => 'doctor',
+            'phone' => '0116233245',
+            'matric_id' => '101234',
+            'status' => 'approved',
+        ]);
+
+
+        User::create([
+            'name' => 'Dr.Norhilda Binti Abdul Karim',
+            'email' => 'norhilda@umpsa.edu.my',
+            'password' => bcrypt('password'),
+            'role' => 'doctor',
+            'phone' => '0116233245',
+            'matric_id' => '123890',
+            'status' => 'approved',
+        ]);
+
+        User::create([
+            'name' => 'Dr. Erwina Nussyaheera Binti Sulaiman ',
+            'email' => 'erwinasyaheera@umpsa.edu.my',
+            'password' => bcrypt('password'),
+            'role' => 'doctor',
+            'phone' => '0116233245',
+            'matric_id' => '345690',
+            'status' => 'approved',
+        ]);
+
+
+        User::create([
+            'name' => 'Dr. Syed Anas Bin Syed Ismail',
+            'email' => 'syedanas@umpsa.edu.my',
+            'password' => bcrypt('password'),
+            'role' => 'doctor',
+            'phone' => '0116233245',
+            'matric_id' => '234098',
+            'status' => 'approved',
+        ]);
+
+
+        User::create([
+            'name' => 'Noor Aina Binti Abdullah ',
+            'email' => 'noorainabdullah@umpsa.edu.my',
+            'password' => bcrypt('password'),
+            'role' => 'doctor',
+            'phone' => '0116233245',
+            'matric_id' => '143289',
+            'status' => 'approved',
+        ]);
+
+
+        User::create([
+            'name' => 'Nur Azmma Aziana Binti Azman',
+            'email' => 'nurazma@umpsa.edu.my',
+            'password' => bcrypt('password'),
+            'role' => 'doctor',
+            'phone' => '0116233245',
+            'matric_id' => '145890',
+            'status' => 'approved',
+        ]);
+
+
+        User::create([
+            'name' => 'Mohammad Hazwan Hafizuddin Bin Hashim',
+            'email' => 'mhazwanh@umpsa.edu.my',
+            'password' => bcrypt('password'),
+            'role' => 'doctor',
+            'phone' => '0116233245',
+            'matric_id' => '1897324',
+            'status' => 'approved',
+        ]);
+
+
+        //dentist
+        User::create([
+            'name' => 'Dr. Mohammad Syarbini Bin Saudi',
+            'email' => 'syarbini@umpsa.edu.my',
+            'password' => bcrypt('password'),
+            'role' => 'dentist',
+            'phone' => '0116233245',
+            'matric_id' => '128567',
+            'status' => 'approved',
+        ]);
+
+
+
+
+        // Seeding Doctor data using the factory
+        // This will generate 10 doctor records
+        Doctor::factory(5)->create();
+        Medicine::factory(5)->create();
 
 
 
