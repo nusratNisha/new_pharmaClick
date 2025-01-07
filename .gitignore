@@ -1,2 +1,4 @@
 vendor
-storage
+storage/app
+storage/framework
+storage/logs
