@@ -66,64 +66,116 @@
                 Book an Appointment
             </h2>
             <div class="p-5">
-
                 <form method="POST" action="{{ route('appointments.store') }}" class="p-5 rounded-lg">
                     @csrf
-                    <div class="mb-4">
-                        <label class="form-label" for="doctor-name">Doctor Name</label>
-                        <!-- Doctor selection dropdown -->
-                        <select class="form-select" id="doctor-name" name="doctor_id">
-                            <option value="">Select a Doctor</option>
+                    <div class="form-group mb-3">
+                        <label for="doctor-name" class="font-weight-bold">Doctor Name</label>
+                        <select class="form-control" id="doctor-name" name="doctor_id" required>
+                            <option value="" disabled selected>Select a Doctor</option>
                             @foreach ($doctors as $doctor)
                             <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="mb-4">
-                        <label class="form-label" for="appointment-type">Appointment Type</label>
-                        <select class="form-select" id="appointment-type" name="appointment_type">
+                    <div class="form-group mb-3">
+                        <label for="type" class="font-weight-bold">Appointment Type</label>
+                        <select class="form-control" id="type" name="type" required>
                             <option value="online">Online</option>
                             <option value="offline">Offline</option>
                         </select>
                     </div>
 
-                    <div class="mb-4">
-                        <label class="form-label" for="appointment-date">Date</label>
-                        <input class="form-control" id="appointment-date" name="appointment_date" type="date">
+                    <div class="form-group mb-3">
+                        <label for="date" class="font-weight-bold">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
                     </div>
 
-                    <div class="mb-4">
-                        <label class="form-label" for="appointment-time">Time</label>
-                        <input class="form-control" id="appointment-time" name="appointment_time" type="time">
+                    <div class="form-group mb-3">
+                        <label for="time" class="font-weight-bold">Time</label>
+                        <input type="time" class="form-control" id="time" name="time" required value="08:00">
                     </div>
 
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-success" type="submit">Book Appointment</button>
+                    <div class="form-group d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success font-weight-bold">Book Appointment</button>
                     </div>
                 </form>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Set the minimum date to today's date
+                var today = new Date();
+                var minDate = today.toISOString().split('T')[0];
+                document.getElementById('date').setAttribute('min', minDate);
+
+                // Disable weekends (Saturday and Sunday)
+                var dateInput = document.getElementById('date');
+                dateInput.addEventListener('input', function() {
+                    var selectedDate = new Date(this.value);
+                    var dayOfWeek = selectedDate.getDay(); // 0 = Sunday, 6 = Saturday
+                    if (dayOfWeek === 0 || dayOfWeek === 6) {
+                        alert('Appointments cannot be booked on weekends.');
+                        this.value = ''; // Clear the value if weekend is selected
+                    }
+                });
+
+
+                // Validate time on input (ensure it's within 8 AM to 6 PM)
+                var timeInput = document.getElementById('time');
+                timeInput.addEventListener('input', function() {
+                    var selectedTime = this.value;
+                    if (selectedTime < '08:00' || selectedTime > '18:00') {
+                        alert('Please select a time between 08:00 AM and 06:00 PM.');
+                        this.value = ''; // Clear the value if the time is out of range
+                    }
+                });
+            });
+        </script>
         <!-- =========================End Appointment Form =================================== -->
 
-        <div class="mt-6">
+        <div class="mt-5 mb-5">
             <h2 class="pl-3 text-xl text-white font-weight-bold mb-4 bg-primary py-2 rounded">
-                Cancel Appointment
+                My Appointment
             </h2>
-            <form class="bg-light p-4 rounded">
-                <div class="mb-4">
-                    <label class="form-label" for="appointment-id">Appointment ID</label>
-                    <input class="form-control" id="appointment-id" type="text" placeholder="Enter Appointment ID">
-                </div>
-                <div class="mb-4">
-                    <label class="form-label" for="reason">Reason for Cancellation</label>
-                    <textarea class="form-control" id="reason" placeholder="Enter Reason"></textarea>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <button class="btn btn-danger" type="button">Cancel Appointment</button>
-                </div>
-            </form>
+            <div class="table-responsive">
+                <table class="table table-striped m-b-0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Doctor</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th width="1%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($appointments as $index => $appointment)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $appointment->doctor->name }}</td> <!-- Assuming you have a 'doctor' relationship -->
+                            <td>{{ ucfirst($appointment->type) }}</td>
+                            <td>{{ \Carbon\Carbon::parse($appointment->date)->format('d M Y') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($appointment->time)->format('H:i') }}</td>
+                            <td>{{ ucfirst($appointment->status) }}</td> <!-- Assuming you have 'status' field -->
+                            <td class="with-btn" nowrap>
+                                <a href="{{ route('appointment.cancel', ['id' => $appointment->id]) }}" class="btn btn-sm btn-danger  p-3">Cancel Appointment</a>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="7" class="text-center">No appointments found</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+
         <div class="mt-6">
             <h2 class="pl-3 text-xl text-white font-weight-bold mb-4 bg-primary py-2 rounded">
                 Appointments List

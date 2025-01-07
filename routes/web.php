@@ -45,15 +45,26 @@ Route::middleware(['auth', 'check.status'])->group(function () {
 
     Route::get('/contact-us', [ContactUsController::class, 'showContactForm'])->name('contactUs.form');
     Route::resource('users', UserController::class);
-    //approve user route
+
+    //approve user 
     Route::get('/user_approve/{id}', [UserController::class, 'approve'])->name('user.approve');
+
+    //reject user
     Route::get('/user_reject/{id}', [UserController::class, 'reject'])->name('user.reject');
+
+    //cancel appointment
+    Route::get('/appointment_cancel/{id}', [AppointmentsController::class, 'cancel'])->name('appointment.cancel');
+
+    //approve appointment
+    Route::get('/appointment_approve/{id}', [AppointmentsController::class, 'approve'])->name('appointment.approve');
+
+    Route::post('/appointments', [AppointmentsController::class, 'store'])->name('appointments.store');
 });
 
 
 
 
-Route::post('/appointments', [AppointmentsController::class, 'store'])->name('appointments.store');
+
 Route::get('/pending-approval', [UserController::class, 'showPendingApproval'])->name('pending_approval');
 
 

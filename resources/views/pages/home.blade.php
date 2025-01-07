@@ -70,6 +70,7 @@
 </div>
 <!-- end row -->
 <!-- ====================================== start table ========================================== -->
+@if (auth()->user()->role === 'super_admin')
 <div class="row">
 	<div class="col-xl-12">
 		<!-- begin panel -->
@@ -128,7 +129,7 @@
 	</div>
 </div>
 <!-- ======================================end table ========================================== -->
-
+@endif
 <!-- end panel-heading -->
 <!-- begin row -->
 <div class="row">

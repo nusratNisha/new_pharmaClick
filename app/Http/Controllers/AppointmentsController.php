@@ -11,27 +11,44 @@ class AppointmentsController extends Controller
     public function appointments()
     {
         $doctors = Doctor::all();
+        $appointments = Appointment::where('user_id', auth()->user()->id)
+            ->where(function ($query) {
+                $query->where('date', '>', now()->toDateString()) // Future date
+                    ->orWhere(function ($query) {
+                        $query->where('date', '=', now()->toDateString()) // Today’s date
+                            ->where('time', '>', now()->toTimeString()); // Future time on the same day
+                    });
+            })
+            ->get();
 
-        return view('pages/appointments', compact('doctors'));
+        return view('pages/appointments', compact('doctors', 'appointments'));
     }
     public function store(Request $request)
     {
         // Validate the request data
         $request->validate([
             'doctor_id' => 'required|exists:doctors,id',
-            'appointment_type' => 'required|in:online,offline',
-            'appointment_date' => 'required|date',
-            'appointment_time' => 'required|date_format:H:i',
+            'type' => 'required|in:online,offline',
+            'date' => 'required|date',
+            'time' => 'required|date_format:H:i',
         ]);
+        $request->merge(['user_id' => auth()->user()->id]);
+        Appointment::create($request->all());
+        return redirect()->route('home');
+    }
 
-        // Create the new appointment in the database
-        Appointment::create([
-            'doctor_id' => $request->doctor_id,
-            'appointment_type' => $request->appointment_type,
-            'appointment_date' => $request->appointment_date,
-            'appointment_time' => $request->appointment_time,
-        ]);
-
+    public function cancel(Request $request)
+    {
+        $appointment = Appointment::find($request->id);
+        $appointment->status = 'Canceled';
+        $appointment->save();
+        return redirect()->route('home');
+    }
+    public function approve(Request $request)
+    {
+        $appointment = Appointment::find($request->id);
+        $appointment->status = 'Approved';
+        $appointment->save();
         return redirect()->route('home');
     }
 }

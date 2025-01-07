@@ -96,13 +96,7 @@ class UserController extends Controller
         // Return a view or form for editing a user (not common in API)
     }
 
-    /**
-     * Update the specified user in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $user = User::find($id);
@@ -133,12 +127,7 @@ class UserController extends Controller
         return response()->json(['message' => 'User updated successfully.', 'user' => $user]);
     }
 
-    /**
-     * Remove the specified user from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $user = User::find($id);

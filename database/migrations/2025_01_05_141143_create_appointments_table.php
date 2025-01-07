@@ -15,6 +15,7 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id(); // Primary key
+            $table->unsignedBigInteger('user_id'); // Foreign key for user
             $table->string('type'); // Type of appointment
             $table->date('date'); // Appointment date
             $table->time('time'); // Appointment time
@@ -23,7 +24,8 @@ class CreateAppointmentsTable extends Migration
             $table->text('reason_cancel')->nullable(); // Reason for cancellation (optional)
             $table->timestamps(); // Created and updated timestamps
 
-            // Optionally, you can add a foreign key constraint
+            // Add foreign key constraints
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
         });
     }

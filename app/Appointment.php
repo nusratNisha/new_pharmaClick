@@ -29,6 +29,7 @@ class Appointment extends Model
         'status',
         'doctor_id',
         'reason_cancel',
+        'user_id',
     ];
 
     /**
@@ -37,5 +38,9 @@ class Appointment extends Model
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
