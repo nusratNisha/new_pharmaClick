@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
 
         //patient
         User::create([
-            'name' => 'studen ',
+            'name' => 'student ',
             'email' => 'test1@test.test',
             'password' => bcrypt('password'),
             'role' => 'patient',
