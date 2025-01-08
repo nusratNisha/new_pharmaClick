@@ -29,37 +29,40 @@
                 Doctor
             </h2>
             <div class="row">
+                @foreach ($doctors as $doctor)
                 <div class="col-md-4 mb-4">
-                    <div class="bg-light p-3 rounded text-center cursor-pointer hover-shadow" onclick="selectDoctor('dr. Azwan Syamh')">
-                        <img alt="Placeholder image of dr. Azwan Syamh" class="mx-auto mb-2 rounded-circle" height="100" src="https://storage.googleapis.com/a1aa/image/SyUvsA3M1Zp4J5fVw4fiyYgBt1WMeIEcba9sIwmEgzPnUgfPB.jpg" width="100" />
-                        <p class="text-lg font-weight-medium">dr. Azwan Syamh</p>
+                    <div class="bg-light p-3 rounded text-center cursor-pointer hover-shadow" onclick="selectDoctor('{{ $doctor->name }}')">
+                        <img
+                            alt="Placeholder image of {{ $doctor->name }}"
+                            class="mx-auto mb-2 rounded-circle"
+                            height="100"
+                            src="{{ asset('storage/imgs/' . $doctor->photo) }}"
+                            width="100" />
+                        <p class="text-lg font-weight-medium">{{ $doctor->name }}</p>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="bg-light p-3 rounded text-center cursor-pointer hover-shadow" onclick="selectDoctor('dr. Indah')">
-                        <img alt="Placeholder image of dr. Indah" class="mx-auto mb-2 rounded-circle" height="100" src="https://storage.googleapis.com/a1aa/image/4TiU6HVGX4ItMRGTdKgb71HHCbPPSuepp73Hi3ClFhiMF4fTA.jpg" width="100" />
-                        <p class="text-lg font-weight-medium">dr. Indah</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="bg-light p-3 rounded text-center cursor-pointer hover-shadow" onclick="selectDoctor('dr. Syaida')">
-                        <img alt="Placeholder image of dr. Syaida" class="mx-auto mb-2 rounded-circle" height="100" src="https://storage.googleapis.com/a1aa/image/MNfrjFe5hinCjE7Bz3evk55m7XFeHTU2pNkVbayIZUHCpAffE.jpg" width="100" />
-                        <p class="text-lg font-weight-medium">dr. Syaida</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
         </div>
         <div class="mb-4">
             <h2 class="pl-3 text-xl text-white font-weight-bold mb-4 bg-primary py-2 rounded">
                 Dentist
             </h2>
             <div class="row">
+                @foreach ($dentists as $dentist)
                 <div class="col-md-4 mb-4">
-                    <div class="bg-light p-3 rounded text-center cursor-pointer hover-shadow" onclick="selectDoctor('drs. Ibnu')">
-                        <img alt="Placeholder image of drs. Ibnu" class="mx-auto mb-2 rounded-circle" height="100" src="https://storage.googleapis.com/a1aa/image/yaQfitxVTdWeOkNS1vYT10VSCk7GxgYlOfbfnCFkT3MWpAffE.jpg" width="100" />
-                        <p class="text-lg font-weight-medium">drs. Ibnu</p>
+                    <div class="bg-light p-3 rounded text-center cursor-pointer hover-shadow" onclick="selectDoctor('{{ $dentist->name }}')">
+                        <img
+                            alt="Placeholder image of {{ $dentist->name }}"
+                            class="mx-auto mb-2 rounded-circle"
+                            height="100"
+                            src="{{ asset('storage/imgs/' . $dentist->photo) }}"
+                            width="100" />
+                        <p class="text-lg font-weight-medium">{{ $dentist->name }}</p>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
         @endif

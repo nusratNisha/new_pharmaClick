@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '101234',
             'status' => 'approved',
-            'photo' => ''
+            'photo' => 'Dr.KhairulSalleh.jpg'
         ]);
 
 
@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '123890',
             'status' => 'approved',
-            'photo' => ''
+            'photo' => 'Dr.NorhildaBinti.jpg'
         ]);
 
         User::create([
@@ -125,7 +125,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '0116233245',
             'matric_id' => '145890',
             'status' => 'approved',
-            'photo' => 'Dr.NurAzma.jpg'
+            'photo' => 'Dr.NurAzmma.jpg'
         ]);
 
 

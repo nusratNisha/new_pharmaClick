@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -157,5 +158,25 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('home');
+    }
+
+    function getFileFromPublicStorage($fileName)
+    {
+        $filePath = "public/imgs/{$fileName}";
+
+        if (Storage::exists($filePath)) {
+            return Storage::url($filePath); // Returns the accessible URL
+        }
+
+        return null; // File not found
+    }
+    public function getFile($fileName)
+    {
+        $filePath = "public/imgs/{$fileName}";
+        if (Storage::exists($filePath)) {
+            return response()->file(storage_path("app/{$filePath}"));
+        }
+
+        return response()->json(['error' => 'File not found'], 404);
     }
 }

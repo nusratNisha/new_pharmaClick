@@ -11,8 +11,24 @@ class AppointmentsController extends Controller
 {
     public function appointments()
     {
-        $doctors = User::where('role', 'doctor')->get();
 
+        // $url = route('file', ['fileName' => 'Dr.KhairulSalleh.jpg']);
+        // dd($url);
+
+
+        $doctors = User::where('role', 'doctor')->get();
+        $userAppointments = Appointment::where('user_id', auth()->user()->id)
+            ->where(function ($query) {
+                $query->where('date', '>', now()->toDateString()) // Future date
+                    ->orWhere(function ($query) {
+                        $query->where('date', '=', now()->toDateString()) // Today’s date
+                            ->where('time', '>', now()->toTimeString()); // Future time on the same day
+                    });
+            })
+            ->get();
+
+
+        $dentists = User::where('role', 'dentist')->get();
         $userAppointments = Appointment::where('user_id', auth()->user()->id)
             ->where(function ($query) {
                 $query->where('date', '>', now()->toDateString()) // Future date
@@ -33,7 +49,8 @@ class AppointmentsController extends Controller
         })->get();
 
 
-        return view('pages/appointments', compact('doctors', 'userAppointments', 'doctorAppointments'));
+
+        return view('pages/appointments', compact('doctors', 'dentists', 'userAppointments', 'doctorAppointments'));
     }
     public function store(Request $request)
     {

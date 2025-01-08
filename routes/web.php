@@ -62,6 +62,8 @@ Route::middleware(['auth', 'check.status'])->group(function () {
     Route::get('/appointment_reject/{id}', [AppointmentsController::class, 'reject'])->name('appointment.reject');
 
     Route::post('/appointments', [AppointmentsController::class, 'store'])->name('appointments.store');
+
+    Route::get('/file/{fileName}', [UserController::class, 'getFile'])->name('file');;
 });
 
 
