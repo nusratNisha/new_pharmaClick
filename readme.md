@@ -21,11 +21,12 @@
 ![Appointment](https://raw.githubusercontent.com/nusratNisha/new_pharmaClick/main/screenshot/appointment.png)
 
 ![Page 1](https://raw.githubusercontent.com/nusratNisha/new_pharmaClick/main/screenshot/1.png)
+![Page 6](https://raw.githubusercontent.com/nusratNisha/new_pharmaClick/main/screenshot/6.png)
+![Page 4](https://raw.githubusercontent.com/nusratNisha/new_pharmaClick/main/screenshot/4.png)
 ![Page 2](https://raw.githubusercontent.com/nusratNisha/new_pharmaClick/main/screenshot/2.png)
 ![Page 3](https://raw.githubusercontent.com/nusratNisha/new_pharmaClick/main/screenshot/3.png)
-![Page 4](https://raw.githubusercontent.com/nusratNisha/new_pharmaClick/main/screenshot/4.png)
+
 ![Page 5](https://raw.githubusercontent.com/nusratNisha/new_pharmaClick/main/screenshot/5.png)
-![Page 6](https://raw.githubusercontent.com/nusratNisha/new_pharmaClick/main/screenshot/6.png)
 
 
 ---
